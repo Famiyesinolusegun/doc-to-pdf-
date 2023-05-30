@@ -1,0 +1,20 @@
+import PyPDF2
+
+# Open the PDF file in read mode
+with open('document.pdf', 'rb') as pdf_file:
+    # Create a PDF reader object
+    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+
+    # Get the total number of pages in the PDF document
+    num_pages = pdf_reader.numPages
+
+    # Loop through each page in the PDF document
+    for page_num in range(num_pages):
+        # Get the current page object
+        page_obj = pdf_reader.getPage(page_num)
+
+        # Extract the text from the current page
+        text = page_obj.extractText()
+
+        # Print the extracted text
+        print(text)
